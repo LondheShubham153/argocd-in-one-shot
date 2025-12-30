@@ -96,9 +96,21 @@ echo "⏳ Checking if ArgoCD CLI is installed..."
 if ! command -v argocd &> /dev/null
 then
     echo "🚀 Installing ArgoCD CLI (Ubuntu)..."
-    curl -sSL -o argocd-linux-amd64 https://github.com/argoproj/argo-cd/releases/latest/download/argocd-linux-amd64
-    sudo install -m 555 argocd-linux-amd64 /usr/local/bin/argocd
-    rm argocd-linux-amd64
+
+    ARCH=$(uname -m)
+    if [ "$ARCH" == "x86_64" ]; then
+        BINARY="argocd-linux-amd64"
+    elif [ "$ARCH" == "aarch64" ]; then
+        BINARY="argocd-linux-arm64"
+    else
+        echo "❌ Unsupported architecture: $ARCH"
+        exit 1
+    fi
+
+    curl -sSL -o $BINARY https://github.com/argoproj/argo-cd/releases/latest/download/$BINARY
+    sudo install -m 555 $BINARY /usr/local/bin/argocd
+    rm $BINARY
+
     echo "✅ ArgoCD CLI installed successfully."
 else
     echo "✅ ArgoCD CLI already installed."
