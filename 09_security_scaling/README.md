@@ -168,7 +168,7 @@ Create: [argocd-user-cm.yaml](argocd-user-cm.yaml)
 * Similarly, You can enable `admin` user, using:
 
   ```bash
-  kubectl patch -n argocd configmap argocd-cm --patch='{"data":{"admin.enabled": "false"}}'
+  kubectl patch -n argocd configmap argocd-cm --patch='{"data":{"admin.enabled": "true"}}'
   ```
 
 ### Example RBAC Policy
