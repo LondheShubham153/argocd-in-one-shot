@@ -108,7 +108,7 @@ argocd-image-updater.argoproj.io/image-list: chai-app=<your-dockerhub-username>/
 Install into the `argocd` namespace:
 
 ```bash
-kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/manifests/install.yaml
+kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj-labs/argocd-image-updater/stable/config/install.yaml
 ```
 
 Verify pod is running:
