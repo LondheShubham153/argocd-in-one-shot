@@ -6,11 +6,11 @@ metadata:                        # Metadata section
 spec:
   project: frontend-team        # Assigns app to the frontend-team Project
   source:
-    repoURL: https://github.com/<your-username>/argocd-demos.git  # Git repo
+    repoURL: https://github.com/LondheShubham153/argocd-in-one-shot/edit/main/05_argocd_features/projects/nginx_app.yml  # Git repo
     targetRevision: main        # Branch to watch
     path: ui_approach/nginx     # Path in repo with manifests
   destination:
-    server: <added_argocd_cluster_server_url>  # Target cluster, run `argocd cluster list` to see
+    server: https://172.31.4.112:33893  # Target cluster, run `argocd cluster list` to see
     namespace: frontend          # Namespace inside that cluster
   syncPolicy:                    # Sync policy settings
     automated:                   # Enable automated sync
